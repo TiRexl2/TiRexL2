@@ -1,0 +1,23 @@
+
+clean:
+   [delete] Deleting directory G:\Source\aCis_gameserver\build
+
+checkRequirements:
+     [echo] Verification of your JDK version.
+
+init:
+    [mkdir] Created dir: G:\Source\aCis_gameserver\build
+    [mkdir] Created dir: G:\Source\aCis_gameserver\build\classes
+    [mkdir] Created dir: G:\Source\aCis_gameserver\build\dist
+    [mkdir] Created dir: G:\Source\aCis_gameserver\build\dist\login
+    [mkdir] Created dir: G:\Source\aCis_gameserver\build\dist\gameserver
+
+compile:
+
+BUILD FAILED
+G:\Source\aCis_gameserver\build.xml:89: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_201"
+
+Total time: 0 seconds
