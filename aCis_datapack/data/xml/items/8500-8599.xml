@@ -195,7 +195,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="900" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="8522" type="EtcItem" name="Seed: Alternative Sea Coba">
@@ -205,7 +205,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="900" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="8523" type="EtcItem" name="Seed: Twin Coba">
@@ -215,7 +215,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="1000" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="8524" type="EtcItem" name="Seed: Alternative Twin Coba">
@@ -225,7 +225,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="1000" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="8525" type="EtcItem" name="Seed: Great Coba">
@@ -235,7 +235,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="8526" type="EtcItem" name="Seed: Alternative Great Coba">
@@ -245,7 +245,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="8527" type="Weapon" name="For Monsters Only (Strengthened Bow)">

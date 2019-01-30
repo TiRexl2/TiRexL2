@@ -7,7 +7,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="40" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-2" />
 	</item>
 	<item id="5701" type="EtcItem" name="Alternative Red Codran Seed">
@@ -17,7 +17,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="40" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="5702" type="EtcItem" name="Alternative Sea Codran Seed">
@@ -27,7 +27,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="50" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="5703" type="EtcItem" name="Lucky Charm">

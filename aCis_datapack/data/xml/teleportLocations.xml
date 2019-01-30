@@ -406,7 +406,7 @@
 	<teleport id="1074" x="87386" y="-143246" z="-1293" price="59000" isNoble="false"/>
 	<teleport id="1075" x="-12672" y="122776" z="-3116" price="35000" isNoble="false"/>
 	<teleport id="1076" x="82764" y="61145" z="-3502" price="780" isNoble="false"/>
-	<teleport id="1077" x="85995" y="-2433" z="-3528" price="5200" isNoble="false"/>
+	<teleport id="1077" x="91550" y="-12142" z="-2424" price="5200" isNoble="false"/>
 	<teleport id="1078" x="83400" y="147943" z="-3404" price="13000" isNoble="false"/>
 	<teleport id="1079" x="111409" y="219364" z="-3545" price="59000" isNoble="false"/>
 	<teleport id="1080" x="87386" y="-143246" z="-1293" price="53000" isNoble="false"/>
@@ -424,7 +424,7 @@
 	<teleport id="1092" x="111409" y="219364" z="-3545" price="83000" isNoble="false"/>
 	<teleport id="1093" x="87386" y="-143246" z="-1293" price="10000" isNoble="false"/>
 	<teleport id="1094" x="82956" y="53162" z="-1495" price="37000" isNoble="false"/>
-	<teleport id="1095" x="149594" y="-112698" z="-2065" price="9300" isNoble="false"/>
+	<teleport id="1095" x="144844" y="-113529" z="-2576" price="9300" isNoble="false"/>
 	<teleport id="1096" x="165054" y="-47861" z="-3560" price="2200" isNoble="false"/>
 	<teleport id="1097" x="106414" y="-87799" z="-2920" price="10000" isNoble="false"/>
 	<teleport id="1098" x="15670" y="142983" z="-2705" price="57000" isNoble="false"/>
@@ -432,8 +432,8 @@
 	<teleport id="1100" x="111409" y="219364" z="-3545" price="82000" isNoble="false"/>
 	<teleport id="1101" x="87386" y="-143246" z="-1293" price="10000" isNoble="false"/>
 	<teleport id="1102" x="82956" y="53162" z="-1495" price="10000" isNoble="false"/>
-	<teleport id="1103" x="57059" y="-82976" z="-2847" price="4800" isNoble="false"/>
-	<teleport id="1104" x="67992" y="-72012" z="-3748" price="3800" isNoble="false"/>
+	<teleport id="1103" x="43782" y="-87946" z="-2752" price="4800" isNoble="false"/>
+	<teleport id="1104" x="65402" y="-71440" z="-3712" price="3800" isNoble="false"/>
 	<teleport id="1105" x="123743" y="-75032" z="-2902" price="14000" isNoble="false"/>
 	<teleport id="1106" x="43799" y="-47727" z="-798" price="10000" isNoble="false"/>
 	<teleport id="1107" x="147928" y="-55273" z="-2734" price="10000" isNoble="false"/>

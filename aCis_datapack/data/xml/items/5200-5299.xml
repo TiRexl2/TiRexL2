@@ -173,7 +173,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="25" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-2" />
 	</item>
 	<item id="5222" type="EtcItem" name="Seed: Blue Cobol">
@@ -183,7 +183,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="50" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-2" />
 	</item>
 	<item id="5223" type="EtcItem" name="Seed: Thorn Cobol">
@@ -193,7 +193,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="50" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-2" />
 	</item>
 	<item id="5224" type="EtcItem" name="Seed: Golden Cobol">
@@ -203,7 +203,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="50" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-2" />
 	</item>
 	<item id="5225" type="EtcItem" name="Seed: Great Cobol">
@@ -213,7 +213,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="50" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-2" />
 	</item>
 	<item id="5226" type="EtcItem" name="Seed: Red Codran">
@@ -223,7 +223,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="40" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="5227" type="EtcItem" name="Seed: Sea Codran">
@@ -233,7 +233,7 @@
 		<set name="weight" val="1" />
 		<set name="price" val="50" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="Seed" />
+		<set name="handler" val="SeedHandler" />
 		<set name="item_skill" val="2097-3" />
 	</item>
 	<item id="5228" type="EtcItem" name="Trash">

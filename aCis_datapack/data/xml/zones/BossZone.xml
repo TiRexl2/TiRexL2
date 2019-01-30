@@ -158,9 +158,10 @@
 		<node X="-15353" Y="-52161" />
 		<node X="-15755" Y="-52134" />
 	</zone>
-    <zone id="110011" type="BossZone" shape="Cuboid" minZ="-5140" maxZ="-4000"><!-- Frintezza Boss -->
-        <stat name="InvadeTime" val="1800000" />
-        <node X="172176" Y="-74106" />
-        <node X="176284" Y="-90033" />
-    </zone>
+	<zone id="110017" shape="NPoly" minZ="-5140" maxZ="-4000"><!-- Frintezza Boss -->
+		<stat name="InvadeTime" val="1800000" />
+		<node X="172176" Y="-74106" />
+		<node X="176284" Y="-90033" />
+	</zone>
+
 </list>
