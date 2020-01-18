@@ -182,9 +182,15 @@ public final class UseItem extends L2GameClientPacket
 				return;
 			
 			if (activeChar.isAttackingNow())
-				ThreadPool.schedule(() -> activeChar.useEquippableItem(item, false), activeChar.getAttackEndTime() - System.currentTimeMillis());
-			else
-				activeChar.useEquippableItem(item, true);
+                ThreadPool.schedule(() -> {
+                    final ItemInstance itemToTest = activeChar.getInventory().getItemByObjectId(_objectId);
+                    if(itemToTest == null)
+                        return;
+                    
+                    activeChar.useEquippableItem(itemToTest, false);
+                }, activeChar.getAttackEndTime() - System.currentTimeMillis());
+            else
+                activeChar.useEquippableItem(item, true);
 		}
 		else
 		{
