@@ -42,7 +42,7 @@ public class Q115_TheOtherSideOfTruth extends Quest
 	private static final int Tablet = 8081;
 	private static final int Report = 8082;
 	
-	public Q115_TheOtherSideOfTruth(final int scriptId, final String name, final String descr)
+	public Q115_TheOtherSideOfTruth()
 	{
 		super(115, "The Other SideOf Truth");
 		

@@ -439,9 +439,9 @@ public class Q336_CoinsOfMagic extends Quest
 		}
 	};
 	
-	public Q336_CoinsOfMagic(int questId, String name, String descr)
+	public Q336_CoinsOfMagic()
 	{
-		super(336, "CoinsOfMagic");
+		super(336, "Coins Of Magic");
 		
 		setItemsIds(COIN_DIAGRAM, KALDIS_COIN, MEMBERSHIP_1, MEMBERSHIP_2, MEMBERSHIP_3);
 		
@@ -750,10 +750,5 @@ public class Q336_CoinsOfMagic extends Quest
 		}
 		
 		return null;
-	}
-	
-	public static void main(String[] args)
-	{
-		new Q336_CoinsOfMagic(336, qn, "Coins Of Magic");
 	}
 }

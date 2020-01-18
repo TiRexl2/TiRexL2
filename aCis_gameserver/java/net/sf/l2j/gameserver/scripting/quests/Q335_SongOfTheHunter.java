@@ -337,9 +337,9 @@ public class Q335_SongOfTheHunter extends Quest
 	
 	private final List<Integer> NPCS = new ArrayList<>();
 	
-	public Q335_SongOfTheHunter(int questId, String name, String descr)
+	public Q335_SongOfTheHunter()
 	{
-		super(335, "SongOfTheHunter");
+		super(335, "Song Of TheHunter");
 		
 		setItemsIds(CYB_DAGGER, LICENSE_1, LICENSE_2, LEAF_PIN, TEST_INSTRUCTIONS_1, TEST_INSTRUCTIONS_2, CYB_REQ);
 		
@@ -1101,10 +1101,5 @@ public class Q335_SongOfTheHunter extends Quest
 	public static void autoChat(Npc npc, String text)
 	{
 		npc.broadcastPacket(new CreatureSay(npc.getObjectId(), Say2.ALL, npc.getName(), text));
-	}
-	
-	public static void main(String[] args)
-	{
-		new Q335_SongOfTheHunter(335, qn, "Song Of The Hunter");
 	}
 }

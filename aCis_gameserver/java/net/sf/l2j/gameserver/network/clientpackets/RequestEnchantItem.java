@@ -95,7 +95,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket
 		
 		synchronized (item)
 		{
-			double chance = scrollTemplate.getChance(item);
+			double chance = scrollTemplate.getChance(item, activeChar);
 			
 			// last validation check
 			if (item.getOwnerId() != activeChar.getObjectId() || !isEnchantable(item) || chance < 0)

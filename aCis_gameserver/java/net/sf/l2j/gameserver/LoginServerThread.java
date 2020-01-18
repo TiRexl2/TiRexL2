@@ -297,6 +297,9 @@ public class LoginServerThread extends Thread
 		final L2GameClient existingClient = _clients.putIfAbsent(account, client);
 		if (existingClient == null)
 		{
+	           if (client.isDetached())
+               return;
+        
 			try
 			{
 				sendPacket(new PlayerAuthRequest(client.getAccountName(), client.getSessionId()));

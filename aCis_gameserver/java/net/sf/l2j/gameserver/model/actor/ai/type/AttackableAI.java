@@ -411,14 +411,14 @@ public class AttackableAI extends CreatureAI implements Runnable
 			if (npc.returnHome(false))
 				return;
 			
+			final int range = Config.MAX_DRIFT_RANGE;
+							
 			// Random walk otherwise.
-			if (npc.getSpawn() != null && !npc.isNoRndWalk() && Rnd.get(RANDOM_WALK_RATE) == 0)
+			if (range > 0 && npc.getSpawn() != null && !npc.isNoRndWalk() && Rnd.get(RANDOM_WALK_RATE) == 0)
 			{
 				int x1 = npc.getSpawn().getLocX();
 				int y1 = npc.getSpawn().getLocY();
 				int z1 = npc.getSpawn().getLocZ();
-				
-				final int range = Config.MAX_DRIFT_RANGE;
 				
 				x1 = Rnd.get(range * 2); // x
 				y1 = Rnd.get(x1, range * 2); // distance

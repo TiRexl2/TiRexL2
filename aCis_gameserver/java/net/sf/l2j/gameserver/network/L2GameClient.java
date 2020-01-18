@@ -11,22 +11,26 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import net.sf.l2j.commons.concurrent.ThreadPool;
 import net.sf.l2j.commons.mmocore.MMOClient;
 import net.sf.l2j.commons.mmocore.MMOConnection;
 import net.sf.l2j.commons.mmocore.ReceivablePacket;
+import net.sf.l2j.commons.mmocore.SendablePacket;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.LoginServerThread;
 import net.sf.l2j.gameserver.data.sql.ClanTable;
 import net.sf.l2j.gameserver.data.sql.PlayerInfoTable;
+import net.sf.l2j.gameserver.data.sql.OfflineTradersTable;
 import net.sf.l2j.gameserver.model.CharSelectSlot;
 import net.sf.l2j.gameserver.model.World;
 import net.sf.l2j.gameserver.model.actor.instance.Player;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadManager;
+import net.sf.l2j.gameserver.model.group.Party;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.pledge.Clan;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
@@ -444,12 +448,13 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
 	
 	public void close(L2GameServerPacket gsp)
 	{
-        if (getConnection() == null)
-            return;
+	       if (getConnection() == null)
+         return;
              
 		getConnection().close(gsp);
 	}
 	
+    
 
 	
 	/**
@@ -545,31 +550,26 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
 				if (getActiveChar() != null && !isDetached())
 				{
 					setDetached(true);
-                    if (offlineMode(getActiveChar()))
-                                       {
-                                               getActiveChar().getParty();
-                                               OlympiadManager.getInstance().unRegisterNoble(getActiveChar());
-                                              
-                                               // If the L2PcInstance has Pet, unsummon it
-                                               if (getActiveChar().hasPet())
-                                               {
-                                                       getActiveChar().getPet().unSummon(getActiveChar());
-                                                       // Dead pet wasn't unsummoned, broadcast npcinfo changes (pet will be without owner name - means owner offline)
-                                                       if (getActiveChar().getPet() != null)
-                                                               getActiveChar().getPet().updateAndBroadcastStatusAndInfos(0);
-                                               }
-                                              
-                                               if (Config.OFFLINE_SET_NAME_COLOR)
-                                               {
-                                                       getActiveChar().getAppearance().setNameColor(Config.OFFLINE_NAME_COLOR);
-                                                       getActiveChar().broadcastUserInfo();
-                                               }
-                                              
-                                               if (getActiveChar().getOfflineStartTime() == 0)
-                                                       getActiveChar().setOfflineStartTime(System.currentTimeMillis());
-                                              
-                                               return;
-                                       }
+	                   if (OfflineTradersTable.offlineMode(getActiveChar()))
+                   {
+	                	getActiveChar().getParty();
+                      
+                       OlympiadManager.getInstance().unRegisterNoble(getActiveChar());
+                      
+                       if (getActiveChar().getPet() != null)
+                       {
+                           getActiveChar().getPet().doRevive();
+                           getActiveChar().getPet().unSummon(getActiveChar());
+                       }
+                      
+                       if (Config.OFFLINE_SET_NAME_COLOR)
+                          getActiveChar().broadcastUserInfo();
+                      
+                       if (getActiveChar().getOfflineStartTime() == 0)
+                           getActiveChar().setOfflineStartTime(System.currentTimeMillis());
+                      
+                       return;
+                   }
 					fast = !getActiveChar().isInCombat() && !getActiveChar().isLocked();
 				}
 				cleanMe(fast);

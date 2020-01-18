@@ -57,8 +57,8 @@ public class PlayerStatus extends PlayableStatus
 			return;
         
 	// If OFFLINE_MODE_NO_DAMAGE is enabled and player is offline and he is in store/craft mode, no damage is taken.
-    if (Config.OFFLINE_MODE_NO_DAMAGE && (getActiveChar().getClient() != null) && getActiveChar().getClient().isDetached() && ((Config.OFFLINE_TRADE_ENABLE && ((getActiveChar().getStoreType() == StoreType.SELL) || (getActiveChar().getStoreType() == StoreType.BUY))) || (Config.OFFLINE_CRAFT_ENABLE && (getActiveChar().isCrafting() || (getActiveChar().getStoreType() == StoreType.MANUFACTURE)))))
-               return;
+	       if (Config.OFFLINE_MODE_NO_DAMAGE && (getActiveChar().getClient() != null) && getActiveChar().getClient().isDetached() && ((Config.OFFLINE_TRADE_ENABLE && ((getActiveChar().getStoreType() == StoreType.SELL) || (getActiveChar().getStoreType() == StoreType.BUY))) || (Config.OFFLINE_CRAFT_ENABLE && (getActiveChar().isCrafting() || (getActiveChar().getStoreType() == StoreType.MANUFACTURE)))))
+	    	   return;
 		
 		// invul handling
 		if (getActiveChar().isInvul())

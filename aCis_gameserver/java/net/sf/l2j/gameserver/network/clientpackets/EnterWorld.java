@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.instancemanager.SevenSigns.SealType;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.World;
 import net.sf.l2j.gameserver.model.actor.instance.Player;
+import net.sf.l2j.gameserver.model.actor.instance.L2VipInstance;
 import net.sf.l2j.gameserver.model.base.ClassRace;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
@@ -285,7 +286,11 @@ public class EnterWorld extends L2GameClientPacket
 			player.sendPacket(new PlaySound("systemmsg_e.1233"));
 			player.sendPacket(ExMailArrived.STATIC_PACKET);
 		}
-		
+	       
+       // Vip Status onEnter
+       if (player.getMemos().getLong("TimeOfVip", 0) > 0)
+          L2VipInstance.onEnterVipStatus(player);
+    		
 		// Clan notice, if active.
 		if (Config.ENABLE_COMMUNITY_BOARD && clan != null && clan.isNoticeEnabled())
 		{

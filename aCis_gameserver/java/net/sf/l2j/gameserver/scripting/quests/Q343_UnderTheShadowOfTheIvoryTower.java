@@ -486,9 +486,4 @@ public class Q343_UnderTheShadowOfTheIvoryTower extends Quest
 		
 		return false;
 	}
-	
-	public static void main(String[] args)
-	{
-		new Q343_UnderTheShadowOfTheIvoryTower();
-	}
 }

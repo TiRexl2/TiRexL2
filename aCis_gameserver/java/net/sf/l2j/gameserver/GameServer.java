@@ -34,6 +34,7 @@ import net.sf.l2j.gameserver.data.manager.LotteryManager;
 import net.sf.l2j.gameserver.data.manager.MovieMakerManager;
 import net.sf.l2j.gameserver.data.manager.RaidPointManager;
 import net.sf.l2j.gameserver.data.manager.ZoneManager;
+import net.sf.l2j.gameserver.data.sql.OfflineTradersTable;
 import net.sf.l2j.gameserver.data.sql.BookmarkTable;
 import net.sf.l2j.gameserver.data.sql.ClanTable;
 import net.sf.l2j.gameserver.data.sql.PlayerInfoTable;
@@ -283,7 +284,10 @@ public class GameServer
 		StringUtil.printSection("System");
 		Runtime.getRuntime().addShutdownHook(Shutdown.getInstance());
 		ForumsBBSManager.getInstance();
-
+		
+if ((Config.OFFLINE_TRADE_ENABLE || Config.OFFLINE_CRAFT_ENABLE) && Config.RESTORE_OFFLINERS)
+        OfflineTradersTable.restoreOfflineTraders();
+ 
 if (Config.DEADLOCK_DETECTOR)
 		{
 			LOGGER.info("Deadlock detector is enabled. Timer: {}s.", Config.DEADLOCK_CHECK_INTERVAL);
@@ -310,7 +314,7 @@ if (Config.DEADLOCK_DETECTOR)
 		sc.HELPER_BUFFER_COUNT = Config.MMO_HELPER_BUFFER_COUNT;
 		
 		final L2GamePacketHandler handler = new L2GamePacketHandler();
-		_selectorThread = new SelectorThread<>(sc, handler, handler, handler, new IPv4Filter());
+		_selectorThread = new SelectorThread(sc, handler, handler, handler, new IPv4Filter());
 		
 		InetAddress bindAddress = null;
 		if (!Config.GAMESERVER_HOSTNAME.equals("*"))

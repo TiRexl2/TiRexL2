@@ -38,7 +38,7 @@ public class Q120_PavelsResearch extends Quest
 	private static final int Heart = 8291;
 	private static final int Necklace = 8292;
 	
-	public Q120_PavelsResearch(int questId, String name, String descr)
+	public Q120_PavelsResearch()
 	{
 		super(120, "Pavels Research");
 		

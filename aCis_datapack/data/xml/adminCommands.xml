@@ -11,6 +11,10 @@
 	<aCar name="admin_silence" accessLevel="7"/>
 	<aCar name="admin_tradeoff" accessLevel="7"/>
 	<aCar name="admin_reload" accessLevel="7"/>
+  
+	<!-- VIP -->
+	<aCar name="admin_vipon" accessLevel="1" />
+	<aCar name="admin_vipoff" accessLevel="1" />
 
 	<!-- ANNOUNCEMENTS -->
 	<aCar name="admin_announce" accessLevel="7"/>

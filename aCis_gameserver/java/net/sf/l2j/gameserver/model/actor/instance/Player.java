@@ -239,6 +239,7 @@ import net.sf.l2j.gameserver.taskmanager.WaterTaskManager;
 import net.sf.l2j.gameserver.templates.skills.L2EffectFlag;
 import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
+import net.sf.l2j.gameserver.taskmanager.VipTimeTaskManager;
 import net.sf.l2j.gameserver.util.Broadcast;
 
 /**
@@ -258,7 +259,7 @@ public final class Player extends Playable
 		PACKAGE_SELL(8);
 		
 		private int _id;
-		
+	
 		private StoreType(int id)
 		{
 			_id = id;
@@ -413,7 +414,7 @@ public final class Player extends Playable
 	private int _teleMode;
 	private boolean _isCrystallizing;
 	private boolean _isCrafting;
-    private long _offlineShopStart = 0;
+    private long _offlineShopStart;
     	
 	private final Map<Integer, Recipe> _dwarvenRecipeBook = new HashMap<>();
 	private final Map<Integer, Recipe> _commonRecipeBook = new HashMap<>();
@@ -569,6 +570,7 @@ public final class Player extends Playable
 	private int _clientHeading;
 	
 	private int _mailPosition;
+	private boolean _isVipStatus;
 	
 	private static final int FALLING_VALIDATION_DELAY = 10000;
 	private volatile long _fallingTimestamp;
@@ -4052,6 +4054,8 @@ public Map<Integer, String> getAccountChars()
 		PvpFlagTaskManager.getInstance().remove(this);
 		GameTimeTaskManager.getInstance().remove(this);
 		ShadowItemTaskManager.getInstance().remove(this);
+		if (isVipStatus())
+		VipTimeTaskManager.getInstance().remove(this);
 	}
 	
 	/**
@@ -4311,7 +4315,7 @@ public Map<Integer, String> getAccountChars()
 	{
 		_storeType = type;
             
-        if (Config.OFFLINE_DISCONNECT_FINISHED && (type == StoreType.NONE) && ((getClient() == null) || getClient().isDetached()))
+		if (Config.OFFLINE_DISCONNECT_FINISHED && type == StoreType.NONE && ((getClient() == null) || getClient().isDetached()))
               deleteMe();
 	}
 	
@@ -8249,6 +8253,8 @@ public Map<Integer, String> getAccountChars()
 		
 		// Add to the GameTimeTask to keep inform about activity time.
 		GameTimeTaskManager.getInstance().add(this);
+		if (isVipStatus())
+		VipTimeTaskManager.getInstance().add(this);
 		
 		// Teleport player if the Seven Signs period isn't the good one, or if the player isn't in a cabal.
 		if (isIn7sDungeon() && !isGM())
@@ -9889,7 +9895,18 @@ public Map<Integer, String> getAccountChars()
 		}
 		
 		return true;
-	}
+	} 
+	
+   public boolean isVipStatus()
+   {
+       return _isVipStatus;
+   }
+  
+   public void setVipStatus(boolean vip)
+   {
+       _isVipStatus = vip;
+   }
+
 	
 	public final int getClientX()
 	{

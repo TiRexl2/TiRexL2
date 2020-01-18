@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.gameserver.model.actor.instance.Player;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
@@ -93,9 +94,10 @@ public abstract class AbstractEnchantPacket extends L2GameClientPacket
 		 * <li>full body armors has a chance of 1/1 for +4, 2/3 for +5, 1/3 for +6, ..., 1/17 for +20. If you've made a +20 armor, chance to make it +21 will be equal to zero (0%).</li>
 		 * </ul>
 		 * @param enchantItem : The item to enchant.
+         * @param player
 		 * @return the enchant chance under double format (0.7 / 0.35 / 0.44324...).
 		 */
-		public final double getChance(ItemInstance enchantItem)
+		public final double getChance(ItemInstance enchantItem, Player player)
 		{
 			if (!isValid(enchantItem))
 				return -1;
@@ -108,10 +110,15 @@ public abstract class AbstractEnchantPacket extends L2GameClientPacket
 			
 			// Armor formula : 0.66^(current-2), chance is lower and lower for each enchant.
 			if (enchantItem.isArmor())
-				chance = Math.pow(Config.ENCHANT_CHANCE_ARMOR, (enchantItem.getEnchantLevel() - 2));
+	               if (player.isVipStatus())
+                   chance = Math.pow(Config.VIP_ENCHANT_CHANCE_ARMOR, (enchantItem.getEnchantLevel() - 2));
+               else
+                  chance = Math.pow(Config.ENCHANT_CHANCE_ARMOR, (enchantItem.getEnchantLevel() - 2));
 			// Weapon formula is 70% for fighter weapon, 40% for mage weapon. Special rates after +14.
 			else if (enchantItem.isWeapon())
 			{
+				if (player.isVipStatus())
+                   chance = (enchantItem.getEnchantLevel() > 14) ? Config.VIP_ENCHANT_CHANCE_WEAPON_15PLUS : Config.VIP_ENCHANT_CHANCE_WEAPON;
 				if (((Weapon) enchantItem.getItem()).isMagical())
 					chance = (enchantItem.getEnchantLevel() > 14) ? Config.ENCHANT_CHANCE_WEAPON_MAGIC_15PLUS : Config.ENCHANT_CHANCE_WEAPON_MAGIC;
 				else

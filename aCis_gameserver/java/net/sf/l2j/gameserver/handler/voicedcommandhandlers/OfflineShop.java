@@ -16,6 +16,8 @@
  */
 package net.sf.l2j.gameserver.handler.voicedcommandhandlers;
 
+import net.sf.l2j.commons.concurrent.ThreadPool;
+
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.data.SkillTable;
 import net.sf.l2j.gameserver.handler.IVoicedCommandHandler;
@@ -81,6 +83,7 @@ public class OfflineShop implements IVoicedCommandHandler
 		if (player.mountPlayer(null))
 		{
 			player.sendMessage("You can't restart in Away mode.");
+			ThreadPool.schedule(() -> player.logout(false), 2000);
 			return false;
 		}
 		
@@ -139,7 +142,7 @@ public class OfflineShop implements IVoicedCommandHandler
 		{
 			// Sleep effect, not official feature but however L2OFF features (like offline trade)
 			if (Config.OFFLINE_SET_SLEEP)
-				player.startAbnormalEffect(AbnormalEffect.SLEEP);
+			player.startAbnormalEffect(AbnormalEffect.SLEEP);
 			
 			player.sendMessage("Your private store has succesfully been flagged as an offline shop and will remain active for ever.");
 			

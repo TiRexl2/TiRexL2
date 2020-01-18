@@ -36,9 +36,29 @@ public final class Config
     public static final String OFFLINE_FILE = "./config/offlineshop.properties";
 	public static final String NPCS_FILE = "./config/npcs.properties";
 	public static final String PLAYERS_FILE = "./config/players.properties";
+	public static final String VIP_FILE = "./config/vip.properties";
 	public static final String SERVER_FILE = "./config/server.properties";
 	public static final String SIEGE_FILE = "./config/siege.properties";
 	
+	// --------------------------------------------------
+	// VIP settings
+	// --------------------------------------------------
+	public static boolean ENABLE_VIP_ITEM;
+	public static int VIP_ITEM_ID;
+	public static int VIP_DAYS;
+	public static int VIP_ITEM_ID2;
+	public static int VIP_DAYS2;
+	public static int VIP_ITEM_ID3;
+	public static int VIP_DAYS3;
+	public static int VIP_XP_SP_RATES;
+	public static int VIP_ADENA_RATES;
+	public static int VIP_SPOIL_RATES;
+	public static int VIP_RATE_DROP_ITEMS_BY_RAID;
+	public static int VIP_DROP_RATES;
+	public static double VIP_ENCHANT_CHANCE_ARMOR;
+	public static double VIP_ENCHANT_CHANCE_WEAPON_15PLUS;
+	public static double VIP_ENCHANT_CHANCE_WEAPON;
+
 	// --------------------------------------------------
 	// Clans settings
 	// --------------------------------------------------
@@ -477,6 +497,8 @@ public final class Config
 	/** Buffs */
 	public static boolean STORE_SKILL_COOLTIME;
 	public static int MAX_BUFFS_AMOUNT;
+	
+	public static int TELEPORT_FRRE_LVL;
 	
 	// --------------------------------------------------
 	// Sieges
@@ -1075,6 +1097,31 @@ public final class Config
 		MAX_MONSTER_ANIMATION = npcs.getProperty("MaxMonsterAnimation", 40);
 	}
 	
+	   private static final void loadVip()
+	{
+			 // VIP settings
+		   ExProperties vip = initProperties(VIP_FILE);
+		   ENABLE_VIP_ITEM = vip.getProperty("VipItemEnabled", true);
+		   VIP_ITEM_ID = vip.getProperty("VipItemId", 3481);
+		   VIP_DAYS = vip.getProperty("VipDays", 5);
+		   VIP_ITEM_ID2 = vip.getProperty("VipItemId2", 3481);
+		   VIP_DAYS2 = vip.getProperty("VipDays2", 5);
+		   VIP_ITEM_ID3 = vip.getProperty("VipItemId3", 3481);
+		   VIP_DAYS3 = vip.getProperty("VipDays3", 5);
+	              
+		   VIP_XP_SP_RATES = vip.getProperty("VipExp/SpRates", 1000);
+		   VIP_ADENA_RATES = vip.getProperty("VipAdenaDrop", 1000);
+		   VIP_SPOIL_RATES = vip.getProperty("VipSpoilRates", 1000);
+		   VIP_RATE_DROP_ITEMS_BY_RAID = vip.getProperty("VipRaidDrop", 1);
+		   VIP_DROP_RATES = vip.getProperty("VipDrop", 1);
+	              
+		   VIP_ENCHANT_CHANCE_ARMOR = vip.getProperty("VipEnchantChanceArmor", 0.77);
+		   VIP_ENCHANT_CHANCE_WEAPON_15PLUS = vip.getProperty("VipEnchantChanceWeapon15Plus", 0.77);
+		   VIP_ENCHANT_CHANCE_WEAPON = vip.getProperty("VipEnchantChanceWeapon", 0.77);
+	      
+	      
+	   }
+	   	
 	/**
 	 * Loads player settings.<br>
 	 * Such as stats, inventory/warehouse, enchant, augmentation, karma, party, admin, petition, skill learn.
@@ -1215,6 +1262,8 @@ public final class Config
 		
 		MAX_BUFFS_AMOUNT = players.getProperty("MaxBuffsAmount", 20);
 		STORE_SKILL_COOLTIME = players.getProperty("StoreSkillCooltime", true);
+		
+		TELEPORT_FRRE_LVL = players.getProperty("TeleportFreeLvl", 40);
 	}
 	
 	/**
@@ -1414,6 +1463,9 @@ public final class Config
 	public static final void loadGameServer()
 	{
 		_log.info("Loading gameserver configuration files.");
+
+		// Vip settings
+		loadVip();
 		
 		// clans settings
 		loadClans();

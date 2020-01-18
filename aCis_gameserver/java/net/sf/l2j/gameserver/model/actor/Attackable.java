@@ -308,6 +308,12 @@ public class Attackable extends Npc
 						exp *= Config.CHAMPION_REWARDS;
 						sp *= Config.CHAMPION_REWARDS;
 					}
+	                   
+					if (attacker.isVipStatus())
+						{
+						exp *= Config.VIP_XP_SP_RATES;
+						sp *= Config.VIP_XP_SP_RATES;
+					}
 					
 					exp *= 1 - penalty;
 					
@@ -393,6 +399,12 @@ public class Attackable extends Npc
 					exp *= Config.CHAMPION_REWARDS;
 					sp *= Config.CHAMPION_REWARDS;
 				}
+	               
+               if (attacker.isVipStatus())
+               {
+                  exp *= Config.VIP_XP_SP_RATES;
+                   sp *= Config.VIP_XP_SP_RATES;
+               }
 				
 				exp *= partyMul;
 				sp *= partyMul;
@@ -755,12 +767,23 @@ public class Attackable extends Npc
 		
 		// Applies Drop rates
 		if (drop.getItemId() == 57)
-			dropChance *= Config.RATE_DROP_ADENA;
+	         if (lastAttacker.isVipStatus())
+               dropChance *= Config.VIP_ADENA_RATES;
+         else
+             if (lastAttacker.isVipStatus())
+              dropChance *= Config.VIP_SPOIL_RATES;
+           else
+               dropChance *= Config.RATE_DROP_SPOIL;
 		else if (isSweep)
 			dropChance *= Config.RATE_DROP_SPOIL;
 		else
-			dropChance *= isRaid() && !isRaidMinion() ? Config.RATE_DROP_ITEMS_BY_RAID : Config.RATE_DROP_ITEMS;
-		
+	       {
+           if (lastAttacker.isVipStatus())
+               dropChance *= isRaid() && !isRaidMinion() ? Config.VIP_RATE_DROP_ITEMS_BY_RAID : Config.VIP_DROP_RATES;
+           else
+               dropChance *= isRaid() && !isRaidMinion() ? Config.RATE_DROP_ITEMS_BY_RAID : Config.RATE_DROP_ITEMS;
+          
+	       }		
 		if (isChampion())
 			dropChance *= Config.CHAMPION_REWARDS;
 		
@@ -859,7 +882,12 @@ public class Attackable extends Npc
 			
 			double dropChance = drop.getChance();
 			if (drop.getItemId() == 57)
-				dropChance *= Config.RATE_DROP_ADENA;
+	               if (lastAttacker.isVipStatus())
+                   dropChance *= Config.VIP_ADENA_RATES;
+               else
+                   dropChance *= Config.RATE_DROP_ADENA;
+           else if (lastAttacker.isVipStatus())
+               dropChance *= isRaid() && !isRaidMinion() ? Config.VIP_RATE_DROP_ITEMS_BY_RAID : Config.VIP_DROP_RATES;
 			else
 				dropChance *= isRaid() && !isRaidMinion() ? Config.RATE_DROP_ITEMS_BY_RAID : Config.RATE_DROP_ITEMS;
 			

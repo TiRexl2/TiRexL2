@@ -93,7 +93,7 @@ public final class Gatekeeper extends Folk
 			}
 			
 			// Delete related items, and if successful teleport the player to the location.
-			if (player.destroyItemByItemId("Teleport ", player.getLevel() < 40 || (list.isNoble()) ? 6651 : 57, price, this, true))
+			if (player.getLevel() <= Config.TELEPORT_FRRE_LVL || player.destroyItemByItemId("Teleport ", (list.isNoble()) ? 6651 : 57, price, this, true))
 				player.teleToLocation(list, 20);
 			
 			player.sendPacket(ActionFailed.STATIC_PACKET);
