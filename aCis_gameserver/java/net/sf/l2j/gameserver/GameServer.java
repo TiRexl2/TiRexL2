@@ -134,7 +134,7 @@ public class GameServer
 		try (InputStream is = new FileInputStream(new File("config/logging.properties")))
 		{
 			LogManager.getLogManager().readConfiguration(is);
-		}
+		};
 		
 		StringUtil.printSection("aCis");
 		

@@ -88,7 +88,7 @@ public final class DecayTaskManager implements Runnable
 			return false;
 		
 		// get corpse action interval, is half of corpse decay
-		int corpseTime = monster.getTemplate().getCorpseTime() * 1000 / 2;
+		int corpseTime = monster.getTemplate().getCorpseTime() * 1000 - 5000;
 		
 		// monster is spoiled or seeded, double the corpse action interval
 		if (monster.getSpoilerId() != 0 || monster.isSeeded())

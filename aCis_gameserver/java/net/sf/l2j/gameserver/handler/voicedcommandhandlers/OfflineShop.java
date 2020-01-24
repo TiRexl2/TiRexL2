@@ -50,7 +50,7 @@ public class OfflineShop implements IVoicedCommandHandler
 
 	@SuppressWarnings("null")
 	@Override
-	public boolean useVoicedCommand(final String command, final Player player, final String target)
+	public boolean useVoicedCommand(String command, Player player, String target)
 	{
 		
 		if (player == null)

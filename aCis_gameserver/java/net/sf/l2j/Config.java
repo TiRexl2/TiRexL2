@@ -499,6 +499,7 @@ public final class Config
 	public static int MAX_BUFFS_AMOUNT;
 	
 	public static int TELEPORT_FRRE_LVL;
+	public static boolean ALLOW_EXP_GAIN_COMMAND;
 	
 	// --------------------------------------------------
 	// Sieges
@@ -1264,6 +1265,8 @@ public final class Config
 		STORE_SKILL_COOLTIME = players.getProperty("StoreSkillCooltime", true);
 		
 		TELEPORT_FRRE_LVL = players.getProperty("TeleportFreeLvl", 40);
+		
+		ALLOW_EXP_GAIN_COMMAND = Boolean.parseBoolean(players.getProperty("AllowExpGainCommand", "false"));
 	}
 	
 	/**

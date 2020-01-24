@@ -20,6 +20,9 @@ public class ChatHeroVoice implements IChatHandler
 		if (!activeChar.isHero())
 			return;
 		
+		if (!activeChar.isGM())
+			return;
+		
 		if (!FloodProtectors.performAction(activeChar.getClient(), Action.HERO_VOICE))
 			return;
 		

@@ -8455,7 +8455,10 @@ public Map<Integer, String> getAccountChars()
 	@Override
 	public void addExpAndSp(long addToExp, int addToSp)
 	{
-		getStat().addExpAndSp(addToExp, addToSp);
+		if (_expGainOn)
+			getStat().addExpAndSp(addToExp, addToSp);
+		   else
+			getStat().addExpAndSp(0, addToSp);
 	}
 	
 	public void addExpAndSp(long addToExp, int addToSp, Map<Creature, RewardInfo> rewards)
@@ -8467,7 +8470,17 @@ public Map<Integer, String> getAccountChars()
 	{
 		getStat().removeExpAndSp(removeExp, removeSp);
 	}
-	
+
+   private boolean _expGainOn = true;
+	   public void setExpOn(boolean expOn)
+   {
+		   _expGainOn = expOn;
+   }
+   public boolean getExpOn()
+   {
+		   return _expGainOn;
+   }
+   
 	@Override
 	public void reduceCurrentHp(double value, Creature attacker, boolean awake, boolean isDOT, L2Skill skill)
 	{
