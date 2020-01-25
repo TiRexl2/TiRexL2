@@ -500,6 +500,7 @@ public final class Config
 	
 	public static int TELEPORT_FRRE_LVL;
 	public static boolean ALLOW_EXP_GAIN_COMMAND;
+	public static boolean ALLOW_MENU;
 	
 	// --------------------------------------------------
 	// Sieges
@@ -1267,6 +1268,8 @@ public final class Config
 		TELEPORT_FRRE_LVL = players.getProperty("TeleportFreeLvl", 40);
 		
 		ALLOW_EXP_GAIN_COMMAND = Boolean.parseBoolean(players.getProperty("AllowExpGainCommand", "false"));
+		
+		ALLOW_MENU = Boolean.parseBoolean(players.getProperty("AllowMenu", "false"));
 	}
 	
 	/**
