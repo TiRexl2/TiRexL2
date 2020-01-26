@@ -20,6 +20,7 @@ import java.util.Map;
 import net.sf.l2j.gameserver.handler.voicedcommandhandlers.Online;
 import net.sf.l2j.gameserver.handler.voicedcommandhandlers.OfflineShop;
 import net.sf.l2j.gameserver.handler.voicedcommandhandlers.ExpGain;
+import net.sf.l2j.gameserver.handler.voicedcommandhandlers.Configurator;
 
 public class VoicedCommandHandler
 {
@@ -36,6 +37,7 @@ public class VoicedCommandHandler
                registerHandler(new Online());
                registerHandler(new OfflineShop());
                registerHandler(new ExpGain());
+               registerHandler(new Configurator());
        }
       
        public void registerHandler(IVoicedCommandHandler handler)

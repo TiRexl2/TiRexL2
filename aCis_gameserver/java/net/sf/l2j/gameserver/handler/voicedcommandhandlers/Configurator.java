@@ -2,13 +2,12 @@ package net.sf.l2j.gameserver.handler.voicedcommandhandlers;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.LoginServerThread;
 import net.sf.l2j.gameserver.handler.IVoicedCommandHandler;
 import net.sf.l2j.gameserver.handler.VoicedCommandHandler;
 import net.sf.l2j.gameserver.model.World;
 import net.sf.l2j.gameserver.model.actor.instance.Player;
-import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 import java.io.IOException;
 
@@ -24,22 +23,22 @@ public class Configurator implements IVoicedCommandHandler
     private static final String[] VOICED_COMMANDS =
             {
                     "menu",
-                    "autoloot",
                     "enableTrade",
                     "disableTrade",
-                    "enableAutoloot",
-                    "disableAutoloot",
                     "enableMessage",
                     "disableMessage",
                     "enableGainExp",
                     "disableGainExp",
+               /**  "autoloot",
+                    "enableAutoloot",
+                    "disableAutoloot", **/
             };
 
     public boolean useVoicedCommand(String command, Player activeChar, String target)
     {
         if (activeChar.isInOlympiadMode() || activeChar.isInCombat())
         {
-            activeChar.sendMessage(SystemMessageId.getMessage(activeChar, SystemMessageId.MSG_NOT_ALLOWED_AT_THE_MOMENT));
+            activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.WHILE_YOU_ARE_ON_THE_WAITING_LIST_YOU_ARE_NOT_ALLOWED_TO_WATCH_THE_GAME));
             return true;
         }
 
